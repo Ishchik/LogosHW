@@ -1,6 +1,6 @@
 #include <iostream>
 
-int my_strcmp(char* str1, char* str2) {
+int my_strcmp(const char* str1,const char* str2) {
     for(int i = 0; str1[i] == str2[i]; i++) {
         if(str1[i+1] != str2[i+1]){
             if(((int)str1[i+1] - (int)str2[i+1]) < 0){
