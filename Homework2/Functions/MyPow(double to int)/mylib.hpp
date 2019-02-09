@@ -1,0 +1,1 @@
+double myPow(const double val, int pow_val);
