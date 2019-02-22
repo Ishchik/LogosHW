@@ -27,12 +27,67 @@ public:
 
     friend std::istream&operator >> (std::istream& is, SimpleRatio& obj);
 
-    SimpleRatio operator+(SimpleRatio other);
+    // +
+    SimpleRatio operator+=(SimpleRatio rhs);
 
-    SimpleRatio operator-(SimpleRatio other);
+    friend inline SimpleRatio operator+(SimpleRatio& lhs, const SimpleRatio& rhs){
+        return lhs += rhs;
+    }
 
-    SimpleRatio operator*(SimpleRatio other);
+    SimpleRatio operator+=(const int val);
 
-    SimpleRatio operator/(SimpleRatio other);
+    inline SimpleRatio operator+(const int val){
+        return *this += val;
+    }
+
+    // -
+    SimpleRatio operator-=(SimpleRatio rhs);
+
+    friend inline SimpleRatio operator-(SimpleRatio& lhs, const SimpleRatio& rhs){
+        return lhs -= rhs;
+    }
+
+    SimpleRatio operator-=(const int val);
+
+    inline SimpleRatio operator-(const int val){
+        return *this -= val;
+    }
+
+    // *
+
+    SimpleRatio operator*=(SimpleRatio rhs);
+
+    friend inline SimpleRatio operator*(SimpleRatio& lhs, const SimpleRatio& rhs){
+        return lhs *= rhs;
+    }
+
+    SimpleRatio operator*=(const int val);
+
+    inline SimpleRatio operator*(const int val){
+        return *this *= val;
+    }
+
+    //  /
+
+    SimpleRatio operator/=(SimpleRatio rhs);
+
+    friend inline SimpleRatio operator/(SimpleRatio& lhs, const SimpleRatio& rhs){
+        return lhs /= rhs;
+    }
+
+    SimpleRatio operator/=(const int val);
+
+    inline SimpleRatio operator/(const int val){
+        return *this /= val;
+    }
+
+    //  logical
+    bool operator>(const SimpleRatio& rhs) const;
+
+    bool operator>=(const SimpleRatio& rhs) const;
+
+    bool operator<(const SimpleRatio& rhs) const;
+
+    bool operator<=(const SimpleRatio& rhs) const;
 };
 

@@ -27,53 +27,91 @@ void SimpleRatio::reduce() {
 }
 
 std::istream &operator>>(std::istream &is, SimpleRatio &obj) {
-    if(is >> obj.chys){
-        if(is.peek() == '/'){
+    if (is >> obj.chys) {
+        if (is.peek() == '/') {
             char t;
             is >> t;
             is >> obj.znam;
-        }else{
+        } else {
             obj.znam = 1;
         }
     }
     return is;
 }
 
-std::ostream & operator<<(std::ostream &os, SimpleRatio& obj) {
+std::ostream &operator<<(std::ostream &os, SimpleRatio &obj) {
     os << obj.chys << " / " << obj.znam << std::endl;
     return os;
 }
 
-SimpleRatio SimpleRatio::operator+(SimpleRatio other) {
-    chys = chys * other.znam + other.chys * znam;
-    znam *= other.znam;
-    reduce();
-    return *this;   //returns pointer to an object
-}
-
-SimpleRatio SimpleRatio::operator-(SimpleRatio other) {
-    chys = chys * other.znam - other.chys * znam;
-    znam *= other.znam;
+SimpleRatio SimpleRatio::operator+=(SimpleRatio rhs) {
+    chys = chys * rhs.znam + rhs.chys * znam;
+    znam *= rhs.znam;
     reduce();
     return *this;
 }
 
-
-
-SimpleRatio SimpleRatio::operator*(SimpleRatio other) {
-    chys *= other.chys;
-    znam *= other.znam;
+SimpleRatio SimpleRatio::operator-=(SimpleRatio rhs) {
+    chys = chys * rhs.znam - rhs.chys * znam;
+    znam *= rhs.znam;
     reduce();
     return *this;
 }
 
-SimpleRatio SimpleRatio::operator/(SimpleRatio other) {
-    int tmp = other.chys;
-    other.chys = other.znam;
-    other.znam = tmp;
-    chys *= other.chys;
-    znam *= other.znam;
+SimpleRatio SimpleRatio::operator*=(SimpleRatio rhs) {
+    chys *= rhs.chys;
+    znam *= rhs.znam;
     reduce();
     return *this;
 }
 
+SimpleRatio SimpleRatio::operator/=(SimpleRatio rhs) {
+    chys *= rhs.znam;
+    znam *= rhs.chys;
+    reduce();
+    return *this;
+}
+
+SimpleRatio SimpleRatio::operator+=(const int val) {
+    chys += znam * val;
+    reduce();
+    return *this;
+}
+
+SimpleRatio SimpleRatio::operator-=(const int val) {
+    chys -= znam * val;
+    reduce();
+    return *this;
+}
+
+SimpleRatio SimpleRatio::operator*=(const int val) {
+    chys *= val;
+    reduce();
+    return *this;
+}
+
+SimpleRatio SimpleRatio::operator/=(const int val) {
+    znam *= val;
+    reduce();
+    return *this;
+}
+
+bool SimpleRatio::operator>(const SimpleRatio &rhs) const {
+//    int com_znam = znam * rhs.znam;
+    return chys * rhs.znam > znam * rhs.chys;
+}
+
+bool SimpleRatio::operator>=(const SimpleRatio &rhs) const {
+    int com_znam = znam * rhs.znam;
+    return (chys * rhs.znam) / com_znam >= (znam * rhs.chys) / com_znam;
+}
+
+bool SimpleRatio::operator<(const SimpleRatio &rhs) const {
+    int com_znam = znam * rhs.znam;
+    return (chys * rhs.znam) / com_znam < (znam * rhs.chys) / com_znam;
+}
+
+bool SimpleRatio::operator<=(const SimpleRatio &rhs) const {
+    int com_znam = znam * rhs.znam;
+    return (chys * rhs.znam) / com_znam <= (znam * rhs.chys) / com_znam;
+}
