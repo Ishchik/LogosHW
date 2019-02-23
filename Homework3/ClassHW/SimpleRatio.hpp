@@ -72,7 +72,7 @@ public:
     SimpleRatio operator/=(SimpleRatio rhs);
 
     friend inline SimpleRatio operator/(SimpleRatio& lhs, const SimpleRatio& rhs){
-        return lhs /= rhs;
+        return  lhs /= rhs;
     }
 
     SimpleRatio operator/=(const int val);

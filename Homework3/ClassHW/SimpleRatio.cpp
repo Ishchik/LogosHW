@@ -97,21 +97,21 @@ SimpleRatio SimpleRatio::operator/=(const int val) {
 }
 
 bool SimpleRatio::operator>(const SimpleRatio &rhs) const {
-//    int com_znam = znam * rhs.znam;
+    int com_znam = znam * rhs.znam;
     return chys * rhs.znam > znam * rhs.chys;
 }
 
-bool SimpleRatio::operator>=(const SimpleRatio &rhs) const {
-    int com_znam = znam * rhs.znam;
-    return (chys * rhs.znam) / com_znam >= (znam * rhs.chys) / com_znam;
-}
-
-bool SimpleRatio::operator<(const SimpleRatio &rhs) const {
-    int com_znam = znam * rhs.znam;
-    return (chys * rhs.znam) / com_znam < (znam * rhs.chys) / com_znam;
-}
-
-bool SimpleRatio::operator<=(const SimpleRatio &rhs) const {
-    int com_znam = znam * rhs.znam;
-    return (chys * rhs.znam) / com_znam <= (znam * rhs.chys) / com_znam;
-}
+//bool SimpleRatio::operator>=(const SimpleRatio &rhs) const {
+//    int com_znam = znam * rhs.znam;
+//    return (chys * rhs.znam) / com_znam >= (znam * rhs.chys) / com_znam;
+//}
+//
+//bool SimpleRatio::operator<(const SimpleRatio &rhs) const {
+//    int com_znam = znam * rhs.znam;
+//    return (chys * rhs.znam) / com_znam < (znam * rhs.chys) / com_znam;
+//}
+//
+//bool SimpleRatio::operator<=(const SimpleRatio &rhs) const {
+//    int com_znam = znam * rhs.znam;
+//    return (chys * rhs.znam) / com_znam <= (znam * rhs.chys) / com_znam;
+//}
