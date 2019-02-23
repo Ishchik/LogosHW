@@ -11,11 +11,11 @@ private:
 public:
     int getChys() const;
 
-    void setChys(int chys);
+    void setChys(const int chys) ;
 
     int getZnam() const;
 
-    void setZnam(int znam);
+    void setZnam(const int znam);
 
     SimpleRatio() : chys(0), znam(1){}
 
@@ -28,66 +28,68 @@ public:
     friend std::istream&operator >> (std::istream& is, SimpleRatio& obj);
 
     // +
-    SimpleRatio operator+=(SimpleRatio rhs);
+    SimpleRatio operator+=(const SimpleRatio& rhs);
 
-    friend inline SimpleRatio operator+(SimpleRatio& lhs, const SimpleRatio& rhs){
-        return lhs += rhs;
+    inline SimpleRatio operator+(const SimpleRatio& rhs){
+        return *this += rhs;
     }
 
-    SimpleRatio operator+=(const int val);
+    SimpleRatio operator+=(const int& val);
 
-    inline SimpleRatio operator+(const int val){
+    inline SimpleRatio operator+(const int& val){
         return *this += val;
     }
 
     // -
-    SimpleRatio operator-=(SimpleRatio rhs);
+    SimpleRatio operator-=(const SimpleRatio& rhs);
 
-    friend inline SimpleRatio operator-(SimpleRatio& lhs, const SimpleRatio& rhs){
-        return lhs -= rhs;
+    inline SimpleRatio operator-(const SimpleRatio& rhs){
+        return *this -= rhs;
     }
 
-    SimpleRatio operator-=(const int val);
+    SimpleRatio operator-=(const int& val);
 
-    inline SimpleRatio operator-(const int val){
+    inline SimpleRatio operator-(const int& val){
         return *this -= val;
     }
 
     // *
 
-    SimpleRatio operator*=(SimpleRatio rhs);
+    SimpleRatio operator*=(const SimpleRatio& rhs);
 
-    friend inline SimpleRatio operator*(SimpleRatio& lhs, const SimpleRatio& rhs){
-        return lhs *= rhs;
+    inline SimpleRatio operator*(const SimpleRatio& rhs){
+//        auto tmp = *this;
+//        return tmp *= rhs;
+        return *this *= rhs;
     }
 
-    SimpleRatio operator*=(const int val);
+    SimpleRatio operator*=(const int& val);
 
-    inline SimpleRatio operator*(const int val){
+    inline SimpleRatio operator*(const int& val){
         return *this *= val;
     }
 
     //  /
 
-    SimpleRatio operator/=(SimpleRatio rhs);
+    SimpleRatio operator/=(const SimpleRatio& rhs);
 
-    friend inline SimpleRatio operator/(SimpleRatio& lhs, const SimpleRatio& rhs){
-        return  lhs /= rhs;
+    inline SimpleRatio operator/(const SimpleRatio& rhs){
+        return  *this /= rhs;
     }
 
-    SimpleRatio operator/=(const int val);
+    SimpleRatio operator/=(const int& val);
 
     inline SimpleRatio operator/(const int val){
         return *this /= val;
     }
 
     //  logical
-    bool operator>(const SimpleRatio& rhs) const;
+    bool operator>(SimpleRatio& rhs) ;
 
-    bool operator>=(const SimpleRatio& rhs) const;
+    bool operator>=(SimpleRatio& rhs);
 
-    bool operator<(const SimpleRatio& rhs) const;
+    bool operator<(const SimpleRatio& rhs);
 
-    bool operator<=(const SimpleRatio& rhs) const;
+    bool operator<=(const SimpleRatio& rhs);
 };
 

@@ -7,7 +7,7 @@ int main() {
     int v1 = 2;
     int v2 = 4;
 
-    SimpleRatio a;
+    SimpleRatio a(v1,v2);
     a.setChys(v1);
     a.setZnam(v2);
 
