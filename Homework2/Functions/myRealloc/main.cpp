@@ -3,7 +3,7 @@
 using namespace std;
 
 void *my_realloc(void *ptr, size_t old_size,
-                 size_t new_size) { 
+                 size_t new_size) {
     char *new_ptr = new char[new_size];
     char *tmp_ptr = static_cast<char *>(ptr);
 
