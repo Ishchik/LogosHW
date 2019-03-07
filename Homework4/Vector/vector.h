@@ -5,14 +5,10 @@ class MyVector {
     //push_back(el)   .
     //push_front(el)    .
     //clear             .
-    //delete_back(el)
     // operator <<
     // operator +
-    // operator -
     //get_size             .
     //get_capacity        .
-    // operator ==
-    // operator !=
 
 private:
     int *vector;
@@ -21,7 +17,7 @@ private:
     size_t size = 0;
 
 public:
-    MyVector(std::initializer_list<int>& init_values) : size(init_values.size()), capacity(init_values.size() + default_capacity){
+    MyVector(std::initializer_list<int> init_values) : size(init_values.size()), capacity(init_values.size() + default_capacity){
         vector = new int [capacity];
         int i = 0;
         for(int el : init_values){
@@ -51,6 +47,8 @@ public:
 
     void popBack();
 
+    void popFront();
+
     size_t getSize() const;
 
     size_t getCapacity() const;
@@ -61,4 +59,8 @@ public:
             std::cout << vector[i] << std::endl;
         }
     }
+
+    int& operator[](int index);
+
+    int operator[](int index) const;
 };
