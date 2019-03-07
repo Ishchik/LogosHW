@@ -28,11 +28,10 @@ void MyVector::resize(const size_t new_size) {
         while (capacity <= new_size) {
             capacity += default_capacity;
         }
+        vector = static_cast<int *>(realloc(vector, capacity));
     }
 
     size = new_size;
-
-    vector = static_cast<int *>(realloc(vector, size));
 }
 
 void MyVector::pushBack(const int &val) {
@@ -58,7 +57,6 @@ size_t MyVector::getCapacity() const {
 
 void MyVector::clear() {
     size = 0;
-    resize(size);
 }
 
 void MyVector::popBack() {
