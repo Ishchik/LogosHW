@@ -1,12 +1,9 @@
-#ifndef TICTACTOE_HUMAN_HPP
-#define TICTACTOE_HUMAN_HPP
-
-
-class Human {
+class Human{
 public:
-    bool chooseSide();
-    //set cell()
+    char player_piece;
+    short int side;
+    int move;
+
+    int set_piece(int move, char board[], char piece);
+
 };
-
-
-#endif //TICTACTOE_HUMAN_HPP

@@ -1,39 +1,23 @@
-#ifndef TICTACTOE_GAME_HPP
-#define TICTACTOE_GAME_HPP
-
 #include <vector>
-#include "Human.hpp"
 #include "Board.hpp"
+#include "Human.hpp"
 
 class Game {
-private:
-    bool currentSide = false;
-    char playingBoard;
-    int position = 0;
 public:
-    void run(){
-        Board board;
-        Human human;
+    void start();
 
-        board.drawInstruction(playingBoard);
-        human.chooseSide();
-        do{
-            board.winner = true;
-            board.drawBoard(playingBoard);
-        }while(!board.winner);
-        //initializes start
+private:
+    Board board;
+    Human human1;
+    Human human2;
 
-        //loading instructions...   (Board)
-        //draw grid (Board)
-        //choose side (Player)
-        //check for winner  (Board)
-        //set char  (Human)
-    }
+    bool winner = false;
+    short int side;
+    short int move_count = 0;
 
+    int chooseSide();
 
+    void makeMove();
 
-
+    bool checkMove(int move);
 };
-
-
-#endif //TICTACTOE_GAME_HPP

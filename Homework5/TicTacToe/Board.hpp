@@ -1,20 +1,11 @@
-#ifndef TICTACTOE_BOARD_HPP
-#define TICTACTOE_BOARD_HPP
-
 #include <vector>
-#include "Human.hpp"
 
-class Board {
+class Board{
+
 public:
-    bool winner = false;
+    char boardGrid [9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-    void drawBoard(char& boardGrid);
-    void drawInstruction(char& boardGrid);
-    //draw grid
-    //empty grid
-    //check for winner combination
-    //set cell X||O
+    void drawInstructions();
+    void drawBoard();
+    bool checkWinner(char m_board[], char piece, int side);
 };
-
-
-#endif //TICTACTOE_BOARD_HPP
