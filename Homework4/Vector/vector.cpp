@@ -1,27 +1,4 @@
 #include "vector.h"
-#include <string>
-
-//void MyVector::resize(const size_t new_size) {
-//    int *new_vector = new int[new_size];
-//    for (int i = 0; i < size; i++) {
-//        new_vector[i] = vector[i];
-//    }
-//
-//    if (capacity <= new_size) {
-//        while (capacity <= new_size) {
-//            capacity += default_capacity;
-//        }
-//    }
-//
-//    size = new_size;
-//    vector = new int[size];
-//
-//    for (int i = 0; i < size; i++) {
-//        vector[i] = new_vector[i];
-//    }
-//
-//    delete[] new_vector;
-//}
 
 void MyVector::resize(const size_t new_size) {
     if (capacity <= new_size) {
@@ -41,8 +18,8 @@ void MyVector::pushBack(const int &val) {
 
 void MyVector::pushFront(const int &val) {
     resize(++size);
-    for(size_t i = size -1;i  > 0; i--){
-        std::swap(vector[i], vector[i-1]);
+    for (size_t i = size - 1; i > 0; i--) {
+        std::swap(vector[i], vector[i - 1]);
     }
     vector[0] = val;
 }
@@ -63,17 +40,24 @@ void MyVector::popBack() {
     resize(--size);
 }
 
-int MyVector::operator[](int index) const {
+const int &MyVector::operator[](int index) const {
     return vector[index];
 }
 
-int& MyVector::operator[](int index) {
+int &MyVector::operator[](int index) {
     return vector[index];
 }
 
 void MyVector::popFront() {
-    for(int i = 0; i < size; i++){
-        vector[i] = vector[i+1];
+    for (int i = 0; i < size; i++) {
+        vector[i] = vector[i + 1];
     }
     resize(--size);
+}
+
+std::ostream& operator<<(std::ostream& os, MyVector& obj) {
+    for (int i = 0; i < obj.size; i++) {
+        os << obj.vector[i] << ' ';
+    }
+    return os;
 }

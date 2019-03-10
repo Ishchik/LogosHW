@@ -5,7 +5,7 @@ class MyVector {
     //push_back(el)   .
     //push_front(el)    .
     //clear             .
-    // operator <<
+    // operator <<         .
     // operator +
     //get_size             .
     //get_capacity        .
@@ -62,5 +62,7 @@ public:
 
     int& operator[](int index);
 
-    int operator[](int index) const;
+    const int& operator[](int index) const;
+
+    friend std::ostream&operator<<(std::ostream& os, MyVector& obj);
 };
