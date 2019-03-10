@@ -2,14 +2,6 @@
 
 
 class MyVector {
-    //push_back(el)   .
-    //push_front(el)    .
-    //clear             .
-    // operator <<         .
-    // operator +
-    //get_size             .
-    //get_capacity        .
-
 private:
     int *vector;
     const size_t default_capacity = 7;
@@ -52,13 +44,6 @@ public:
     size_t getSize() const;
 
     size_t getCapacity() const;
-
-    //debug
-    void get(){
-        for(int i = 0; i < size; i++){
-            std::cout << vector[i] << std::endl;
-        }
-    }
 
     int& operator[](int index);
 
